@@ -1,2 +1,1 @@
-hello:
-	echo "Hello, World"
+
