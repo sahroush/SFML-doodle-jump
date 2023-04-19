@@ -1,4 +1,4 @@
-#Doodle jump
+# Doodle jump
 
 Minimalistic (and stupid) doodle jump written with SFML.
 
