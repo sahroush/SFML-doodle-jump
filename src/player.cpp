@@ -7,13 +7,8 @@ Player::Player(){
     sprite.setTexture(texture);
     sprite.setScale(Vector2f(0.12f, 0.12f));
     sprite.setOrigin(0, sprite.getLocalBounds().height);
-    x = y = 0;
     vx = 0;
     vy = 0;
-}
-
-pii Player::get_pos(){
-    return {x, y};
 }
 
 Sprite Player::get_sprite(){
@@ -55,25 +50,23 @@ void Player::stop_right(){
 void Player::jump(){
     if(going_up)return;
     going_up = 1;
-    vy += 23;
-    ay = -1;
+    vy -= 23;
+    ay = 1;
 }
 
 void Player::update(){
+    auto x = sprite.getPosition().x;
+    auto y = sprite.getPosition().y;
     vy += ay;
     x += vx;
     y += vy;
-    if(y < 0){
-        vy = 0;
-        y = 0;
-        going_up = 0;
-    }
     if(x < -sprite.getGlobalBounds().width/2){
         x = WIDTH-sprite.getGlobalBounds().width/2;
     }
     else if(x > WIDTH-sprite.getGlobalBounds().width/2){
         x = -sprite.getGlobalBounds().width/2;
     }
+    sprite.setPosition(x, y);
 }
 
 void Player::set_position(int x, int y){
@@ -81,12 +74,16 @@ void Player::set_position(int x, int y){
 }
 
 bool Player::is_going_down(){
-    return vy < 0;
+    return vy > 0;
 }
 
 void Player::stop_descent(int h){
+    auto x = sprite.getPosition().x;
+    auto y = sprite.getPosition().y;
     vy = 0;
     ay = 0;
-    y += h;
+    y = h;
     going_up = 0;
+    sprite.setPosition(x, y);
+    jump();
 }

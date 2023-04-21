@@ -21,7 +21,7 @@ void System::handle_key_down(Event &event){
     switch(event.key.code){
     case(Keyboard::Up):
     case(Keyboard::Space):
-        player->jump();
+        //player->jump();
         break;
     case(Keyboard::Left):
     case(Keyboard::A):
@@ -76,7 +76,7 @@ void System::update(){
     if(player->is_going_down()){
         for(auto platform : platforms)
             if(player->collides_with(platform->get_sprite())){
-                player->stop_descent(platform->get_h()-sprite.getPosition().y);
+                player->stop_descent(platform->get_h());
                 break;
             }
     }
@@ -104,10 +104,6 @@ void System::render(){
 }
 
 void System::draw_player(){
-    auto [x, y] = player->get_pos();
-    y = HEIGHT - y;
     auto sprite = player->get_sprite();
-    sprite.setPosition(x, y);
-    player->set_position(x, y);
     window.draw(sprite);
 }

@@ -8,7 +8,6 @@ Platform::Platform(int h_){
     }
     sprite.setTexture(texture);
     sprite.setScale(Vector2f(0.5, 0.5));
-    sprite.setOrigin(0, sprite.getLocalBounds().height);
     x = rng()%int(WIDTH - sprite.getGlobalBounds().width);
     sprite.setPosition(x, h);
 };

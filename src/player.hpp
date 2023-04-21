@@ -6,7 +6,6 @@
 class Player : public Entity {
 public:
     Player();
-    pii get_pos();
     Sprite get_sprite();
     void go_left();
     void go_right();
@@ -19,9 +18,8 @@ public:
     void stop_descent(int h);
 private:
     Texture texture;
-    int x, y;
     int vx, vy;
-    int ay = -1;
+    int ay = 1;
     bool going_left = 0;
     bool going_right = 0;
     bool going_up = 0;
