@@ -1,6 +1,6 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -lsfml-graphics -lsfml-window -lsfml-system
-SRCS = src/main.cpp src/player.cpp src/platform.cpp src/system.cpp
+SRCS = src/main.cpp src/player.cpp src/platform.cpp src/system.cpp src/entity.cpp
 OBJS = $(SRCS:.cpp=.o)
 MAIN = src/doodlejump
 
@@ -18,7 +18,7 @@ clean:
 	$(RM) $(OBJS) $(MAIN)
 
 main.o: main.cpp platform.cpp player.cpp system.cpp global_stuff.hpp
-system.o: platform.cpp player.cpp system.cpp global_headers.hpp system.h
-player.o: player.cpp global_headers.hpp player.h
-platform.o: platfform.cpp global_headers.hpp platform.h
-
+system.o: platform.cpp player.cpp system.cpp global_stuff.hpp system.hpp
+player.o: player.cpp global_stuff.hpp player.hpp
+platform.o: platfform.cpp global_stuff.hpp.hpp platform.hpp
+entity.o: system.o

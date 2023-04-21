@@ -1,6 +1,9 @@
+#pragma once
+
 #include "global_stuff.hpp"
 #include "player.hpp"
 #include "platform.hpp"
+#include "entity.hpp"
 
 
 

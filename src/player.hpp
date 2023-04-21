@@ -1,6 +1,9 @@
-#include "global_stuff.hpp"
+#pragma once
 
-class Player {
+#include "global_stuff.hpp"
+#include "entity.hpp"
+
+class Player : private Entity {
 public:
     Player();
     pii get_pos();
@@ -12,7 +15,6 @@ public:
     void jump();
     void update();
 private:
-    Sprite sprite;
     Texture texture;
     int x, y;
     int vx, vy;
