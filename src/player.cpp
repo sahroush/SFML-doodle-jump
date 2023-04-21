@@ -18,7 +18,7 @@ Sprite Player::get_sprite(){
 void Player::go_left(){
     if(going_left)return;
     going_left = 1;
-    vx -= 10;
+    vx -= 3;
     if(!faced_left){
         mirrorSpriteHorizontally();
         faced_left = 1;
@@ -28,7 +28,7 @@ void Player::go_left(){
 void Player::go_right(){
     if(going_right)return;
     going_right = 1;
-    vx += 10;
+    vx += 3;
     if(faced_left){
         mirrorSpriteHorizontally();
         faced_left = 0;
@@ -38,20 +38,20 @@ void Player::go_right(){
 void Player::stop_left(){
     if(!going_left)return;
     going_left = 0;
-    vx += 10;
+    vx += 3;
 }
 
 void Player::stop_right(){
     if(!going_right)return;
     going_right = 0;
-    vx -= 10;
+    vx -= 3;
 }
 
 void Player::jump(){
     if(going_up)return;
     going_up = 1;
-    vy -= 23;
-    ay = 1;
+    vy -= 10;
+    ay = 0.1;
 }
 
 void Player::update(){

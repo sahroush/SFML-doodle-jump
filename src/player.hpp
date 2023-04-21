@@ -18,8 +18,8 @@ public:
     void stop_descent(int h);
 private:
     Texture texture;
-    int vx, vy;
-    int ay = 1;
+    double vx, vy;
+    double ay = 0.1;
     bool going_left = 0;
     bool going_right = 0;
     bool going_up = 0;

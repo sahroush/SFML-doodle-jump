@@ -22,5 +22,7 @@ void Entity::mirrorSpriteHorizontally() {
 }
 
 bool Entity::collides_with(Sprite other){
+    if(abs(sprite.getPosition().y - other.getPosition().y) > 10)
+        return 0;
     return sprite.getGlobalBounds().intersects(other.getGlobalBounds());
 }

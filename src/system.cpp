@@ -5,7 +5,7 @@ System::System(int width, int height){
     camera = View(FloatRect(0, 0, window.getSize().x, window.getSize().y));
     camera.setCenter(window.getSize().x, window.getSize().y);   
     window.setView(camera);
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(144);
     player = new Player;
 }
 
@@ -92,7 +92,6 @@ void System::update(){
     while(platforms.size() and height - platforms.front()->get_h() > 100){
         platforms.pop_front();
     }
-    cout << platforms.size() << endl;
 }
 
 void System::render(){
