@@ -8,7 +8,8 @@ Player::Player(){
     sprite.setScale(Vector2f(0.12f, 0.12f));
     sprite.setOrigin(0, sprite.getLocalBounds().height);
     x = y = 0;
-    vx = vy = 0;
+    vx = 0;
+    vy = 0;
 }
 
 pii Player::get_pos(){
@@ -28,6 +29,7 @@ void Player::go_left(){
         faced_left = 1;
     }
 }
+
 void Player::go_right(){
     if(going_right)return;
     going_right = 1;
@@ -37,21 +39,26 @@ void Player::go_right(){
         faced_left = 0;
     }
 }  
+
 void Player::stop_left(){
     if(!going_left)return;
     going_left = 0;
     vx += 10;
 }
+
 void Player::stop_right(){
     if(!going_right)return;
     going_right = 0;
     vx -= 10;
 }
+
 void Player::jump(){
     if(going_up)return;
     going_up = 1;
-    vy += 30;
+    vy += 23;
+    ay = -1;
 }
+
 void Player::update(){
     vy += ay;
     x += vx;
@@ -67,4 +74,19 @@ void Player::update(){
     else if(x > WIDTH-sprite.getGlobalBounds().width/2){
         x = -sprite.getGlobalBounds().width/2;
     }
+}
+
+void Player::set_position(int x, int y){
+    sprite.setPosition(x, y);
+}
+
+bool Player::is_going_down(){
+    return vy < 0;
+}
+
+void Player::stop_descent(int h){
+    vy = 0;
+    ay = 0;
+    //y = h;
+    going_up = 0;
 }

@@ -19,8 +19,11 @@ private:
     void handle_key_up(Event &event);
     void handle_key_down(Event &event);
     void draw_player();
-    vector <Platform*> platforms;
+    deque <Platform*> platforms;
     Player* player;
-    int dist_between_platforms = 20;
+    int dist_between_platforms = 100;
     RenderWindow window;
+    View camera;
+    int height = 0;
+    int max_height = 3*HEIGHT;
 };

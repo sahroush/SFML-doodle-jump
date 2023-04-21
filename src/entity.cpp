@@ -20,3 +20,7 @@ void Entity::mirrorSpriteHorizontally() {
     // Set the new origin for the sprite
     sprite.setOrigin(origin);
 }
+
+bool Entity::collides_with(Sprite other){
+    return sprite.getGlobalBounds().intersects(other.getGlobalBounds());
+}

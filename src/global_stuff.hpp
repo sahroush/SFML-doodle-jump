@@ -4,7 +4,9 @@
 #include <stdexcept>
 #include <utility> 
 #include <SFML/Graphics.hpp>
-#include <vector>
+#include <deque>
+#include <chrono>
+#include <random>
 
 using namespace sf;
 using namespace std;

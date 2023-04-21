@@ -3,7 +3,7 @@
 #include "global_stuff.hpp"
 #include "entity.hpp"
 
-class Player : private Entity {
+class Player : public Entity {
 public:
     Player();
     pii get_pos();
@@ -14,11 +14,14 @@ public:
     void stop_right();
     void jump();
     void update();
+    void set_position(int x, int y);
+    bool is_going_down();
+    void stop_descent(int h);
 private:
     Texture texture;
     int x, y;
     int vx, vy;
-    int ay = -2;
+    int ay = -1;
     bool going_left = 0;
     bool going_right = 0;
     bool going_up = 0;
