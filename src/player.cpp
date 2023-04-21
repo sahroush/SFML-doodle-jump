@@ -23,11 +23,19 @@ void Player::go_left(){
     if(going_left)return;
     going_left = 1;
     vx -= 10;
+    if(!faced_left){
+        mirrorSpriteHorizontally();
+        faced_left = 1;
+    }
 }
 void Player::go_right(){
     if(going_right)return;
     going_right = 1;
     vx += 10;
+    if(faced_left){
+        mirrorSpriteHorizontally();
+        faced_left = 0;
+    }
 }  
 void Player::stop_left(){
     if(!going_left)return;

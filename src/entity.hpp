@@ -7,6 +7,7 @@ public:
     Entity();
 protected:
     Sprite sprite;
+    void mirrorSpriteHorizontally();
 private:
 
 };

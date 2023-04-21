@@ -16,25 +16,34 @@ void System::run(){
 
 void System::handle_key_down(Event &event){
     switch(event.key.code){
+    case(Keyboard::Up):
     case(Keyboard::Space):
         player->jump();
         break;
+    case(Keyboard::Left):
     case(Keyboard::A):
         player->go_left();
         break;
+    case(Keyboard::Right):
     case(Keyboard::D):
         player->go_right();
+        break;
+    default:
         break;
     }
 }
 
 void System::handle_key_up(Event &event){
     switch(event.key.code){
+    case(Keyboard::Left):
     case(Keyboard::A):
         player->stop_left();
         break;
+    case(Keyboard::Right):
     case(Keyboard::D):
         player->stop_right();
+        break;
+    default:
         break;
     }
 }
@@ -51,6 +60,8 @@ void System::handle_events(){
             break;
         case(Event::KeyReleased):
             handle_key_up(event);
+            break;
+        default:
             break;
         }
     }

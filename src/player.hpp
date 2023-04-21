@@ -22,4 +22,5 @@ private:
     bool going_left = 0;
     bool going_right = 0;
     bool going_up = 0;
+    bool faced_left = 0;
 };
