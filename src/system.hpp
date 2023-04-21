@@ -1,4 +1,4 @@
-#include "global_headers.hpp"
+#include "global_stuff.hpp"
 #include "player.hpp"
 #include "platform.hpp"
 
@@ -15,7 +15,7 @@ private:
     void handle_events();
     void handle_key_up(Event &event);
     void handle_key_down(Event &event);
-
+    void draw_player();
     vector <Platform*> platforms;
     Player* player;
     int dist_between_platforms = 20;

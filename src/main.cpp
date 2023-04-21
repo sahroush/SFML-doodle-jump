@@ -1,10 +1,5 @@
-#include "global_headers.hpp"
+#include "global_stuff.hpp"
 #include "system.hpp"
-
-
-const int WIDTH = 400;
-const int HEIGHT = 800;
-
 
 int main(){
     //This is the product of OOP overuse

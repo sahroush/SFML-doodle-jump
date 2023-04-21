@@ -2,6 +2,7 @@
 
 System::System(int width, int height){
     window.create(VideoMode(width, height), "doodle jump?", Style::Close);
+    window.setFramerateLimit(72);
     player = new Player;
 }
 
@@ -15,23 +16,27 @@ void System::run(){
 
 void System::handle_key_down(Event &event){
     switch(event.key.code){
+    case(Keyboard::Space):
+        player->jump();
+        break;
     case(Keyboard::A):
         player->go_left();
         break;
-    case(Keyboard::S):
-        player->go_down();
-        break;
     case(Keyboard::D):
         player->go_right();
-        break;
-    case(Keyboard::W):
-        player->go_up();
         break;
     }
 }
 
 void System::handle_key_up(Event &event){
-    
+    switch(event.key.code){
+    case(Keyboard::A):
+        player->stop_left();
+        break;
+    case(Keyboard::D):
+        player->stop_right();
+        break;
+    }
 }
 
 void System::handle_events(){
@@ -52,12 +57,20 @@ void System::handle_events(){
 }
 
 void System::update(){
-
+    player->update();
 }
 
 void System::render(){
     window.clear(Color(226, 200, 232));
-    player->draw(window);
+    draw_player();
 
     window.display();
+}
+
+void System::draw_player(){
+    auto [x, y] = player->get_pos();
+    y = HEIGHT - y;
+    auto sprite = player->get_sprite();
+    sprite.setPosition(x, y);
+    window.draw(sprite);
 }
