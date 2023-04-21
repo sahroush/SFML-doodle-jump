@@ -26,4 +26,8 @@ private:
     View camera;
     int height = 0;
     int max_height = 3*HEIGHT;
+    bool game_over;
+    void lose_phase();
+    bool isSpriteInView(const sf::View& view, const sf::Sprite& sprite);
+    Font font;
 };

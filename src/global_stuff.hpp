@@ -4,6 +4,7 @@
 #include <stdexcept>
 #include <utility> 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include <deque>
 #include <chrono>
 #include <random>

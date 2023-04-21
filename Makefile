@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -lsfml-graphics -lsfml-window -lsfml-system
+CXXFLAGS = -std=c++17 -Wall -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 SRCS = src/main.cpp src/player.cpp src/platform.cpp src/system.cpp src/entity.cpp
 OBJS = $(SRCS:.cpp=.o)
 MAIN = src/doodlejump

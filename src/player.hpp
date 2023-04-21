@@ -16,6 +16,7 @@ public:
     void set_position(int x, int y);
     bool is_going_down();
     void stop_descent(int h);
+    bool is_falling();
 private:
     Texture texture;
     double vx, vy;
@@ -24,4 +25,8 @@ private:
     bool going_right = 0;
     bool going_up = 0;
     bool faced_left = 0;
+    SoundBuffer jump_buffer, fall_buffer;
+    Sound jump_sound;
+    Sound falling_sound;
+    bool lost = 0;
 };

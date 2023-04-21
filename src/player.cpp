@@ -9,6 +9,10 @@ Player::Player(){
     sprite.setOrigin(0, sprite.getLocalBounds().height);
     vx = 0;
     vy = 0;
+    jump_buffer.loadFromFile("../files/jump.wav");
+    jump_sound.setBuffer(jump_buffer);
+    fall_buffer.loadFromFile("../files/fall.wav");
+    falling_sound.setBuffer(fall_buffer);
 }
 
 Sprite Player::get_sprite(){
@@ -52,6 +56,7 @@ void Player::jump(){
     going_up = 1;
     vy -= 10;
     ay = 0.1;
+    jump_sound.play();
 }
 
 void Player::update(){
@@ -75,6 +80,16 @@ void Player::set_position(int x, int y){
 
 bool Player::is_going_down(){
     return vy > 0;
+}
+
+bool Player::is_falling(){
+    if(lost)return 1;
+    if(vy < 20)
+        return 0;
+    lost = 1;
+    falling_sound.play();
+    vy = 3;
+    return 1;
 }
 
 void Player::stop_descent(int h){
