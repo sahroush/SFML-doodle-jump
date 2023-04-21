@@ -87,6 +87,6 @@ bool Player::is_going_down(){
 void Player::stop_descent(int h){
     vy = 0;
     ay = 0;
-    //y = h;
+    y += h;
     going_up = 0;
 }

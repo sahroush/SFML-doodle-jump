@@ -72,15 +72,15 @@ void System::handle_events(){
 
 void System::update(){
     mt19937 rng(chrono::system_clock::now().time_since_epoch().count());
+    Sprite sprite = player->get_sprite();
     if(player->is_going_down()){
         for(auto platform : platforms)
             if(player->collides_with(platform->get_sprite())){
-                player->stop_descent(platform->get_h());
+                player->stop_descent(platform->get_h()-sprite.getPosition().y);
                 break;
             }
     }
     player->update();
-    Sprite sprite = player->get_sprite();
     camera.setCenter(WIDTH/2, sprite.getPosition().y);
     height = min(height, int(sprite.getPosition().y));
     window.setView(camera);
